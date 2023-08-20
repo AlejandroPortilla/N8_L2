@@ -1,16 +1,19 @@
 package com.mycompany.proyecto1;
-
+//Añadiendo importaciones
 import java.util.Scanner;
 import java.util.ArrayList;
 import mundo.Alumno;
 
 public class Proyecto1 {
     public static void main(String[] args) {
+        //definiendo variables lector y activo
         Scanner lector = new Scanner(System.in);
         boolean activo = true;
         
+        //creando el array en el que se va a guardar cada cosa
         ArrayList<Alumno> misAlumnos = new ArrayList<Alumno>();
         
+        //abriendo un do-while para que el menu se repita hasta que la bandera sea 5
         do {
             System.out.println("Menú de Opciones:");
             System.out.println("Qué operación deseas hacer:");
@@ -22,22 +25,26 @@ public class Proyecto1 {
             System.out.print("Seleccione una opción: ");
             
             int opcion = lector.nextInt();
-            
+            //aqui abrimos el switch en el que se va a cumplir lo de el menu de opciones
             switch (opcion) {
                 case 1:
                     System.out.println("Ha seleccionado la Opción 1. (Insertar Alumno)");
+                    //llamando a la funcion agregarAlumno
                     agregarAlumno(misAlumnos, lector);
                     break;
                 case 2:
                     System.out.println("Ha seleccionado la Opción 2. (Eliminar Alumno)");
+                    //llamando a la funcion eliminarAlumno
                     eliminarAlumno(misAlumnos, lector);
                     break;
                 case 3:
                     System.out.println("Ha seleccionado la Opción 3. (Modificar Alumno)");
+                    //llamando a la funcion modificarAlumno
                     modificarAlumno(misAlumnos,lector);
                     break;
                 case 4:
                     System.out.println("Ha seleccionado la Opción 4. (Consultar Alumno)");
+                    //llamando a la funcion consultarAlumno
                     consultarAlumno(misAlumnos, lector);
                     break;
                 case 5:
@@ -48,10 +55,12 @@ public class Proyecto1 {
                     System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
                     break;
             }
+            //cerramos el while y se coloca la variable activo como bandera
         } while (activo);
-
+         //cerramos el scanner(lector)  
         lector.close();
     }
+    //FUNCIONES DEL SWITCH
 
     public static void agregarAlumno(ArrayList<Alumno> listaAlumnos, Scanner lector) {
     Alumno nuevoAlumno = new Alumno();

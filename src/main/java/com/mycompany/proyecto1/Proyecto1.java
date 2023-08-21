@@ -219,6 +219,7 @@ public class Proyecto1 {
     } else {
         System.out.println("Listado de Alumnos:");
         for (Alumno alumno : listaAlumnos) {
+            System.out.println("---------------------------");
             System.out.println("Nombre: " + alumno.getNombre());
             System.out.println("Apellido: " + alumno.getApellido());
             System.out.println("Cédula: " + alumno.getCedula());
@@ -226,6 +227,7 @@ public class Proyecto1 {
             System.out.println("Correo: " + alumno.getCorreo());
             System.out.println("Celular: " + alumno.getTelefono());
             System.out.println("---------------------------");
+                    
         }
     }
 }

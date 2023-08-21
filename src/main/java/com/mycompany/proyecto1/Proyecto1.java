@@ -51,7 +51,7 @@ public class Proyecto1 {
                     break;
                 case 5:
                     System.out.println("Ha seleccionado la Opción 5. (mostrar listado de Alumnos)");
-                    
+                    mostrarListadoAlumnos(misAlumnos);
                     break;
                 case 6:
                     System.out.println("Saliendo del programa.");

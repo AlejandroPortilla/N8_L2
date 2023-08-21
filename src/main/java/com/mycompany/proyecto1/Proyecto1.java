@@ -66,7 +66,7 @@ public class Proyecto1 {
          //cerramos el scanner(lector)  
         lector.close();
     }
-    //FUNCIONES DEL SWITCH asdfds
+    //FUNCIONES DEL SWITCH
 
     public static void agregarAlumno(ArrayList<Alumno> listaAlumnos, Scanner lector) {
     Alumno nuevoAlumno = new Alumno();

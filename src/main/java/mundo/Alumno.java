@@ -8,11 +8,11 @@ public class Alumno {
     private String correo;
     private String telefono;
     private String cedula;
-    
+//constructor vacio    
 public Alumno(){
     
 }    
-
+//constructor lleno con los this y cada variable
 public Alumno(String nombre, String apellido,String semestre, String correo, String telefono, String cedula ){
     this.nombre   = nombre;
     this.apellido = apellido;
@@ -23,6 +23,7 @@ public Alumno(String nombre, String apellido,String semestre, String correo, Str
    
     
 }
+//colocando los set y los gets
 public String getNombre(){
     return nombre;
 }

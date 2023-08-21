@@ -22,7 +22,8 @@ public class Proyecto1 {
             System.out.println("2. Eliminar Alumno");
             System.out.println("3. Modificar Alumno");
             System.out.println("4. Consultar Alumno");
-            System.out.println("5. Terminar Programa:");
+            System.out.println("5. Mostrar listado de Alumnos:");
+            System.out.println("6. Terminar Programa:");
             System.out.print("Seleccione una opción: ");
             
             int opcion = lector.nextInt();
@@ -49,6 +50,10 @@ public class Proyecto1 {
                     consultarAlumno(misAlumnos, lector);
                     break;
                 case 5:
+                    System.out.println("Ha seleccionado la Opción 5. (mostrar listado de Alumnos)");
+                    
+                    break;
+                case 6:
                     System.out.println("Saliendo del programa.");
                     activo = false;
                     break;
@@ -205,7 +210,23 @@ public class Proyecto1 {
     } else {
         System.out.println("No se encontró ningún alumno con la cédula proporcionada.");
     }
+    
 }
+    
+    public static void mostrarListadoAlumnos(ArrayList<Alumno> listaAlumnos) {
+    System.out.println("Listado de Alumnos:");
+    for (Alumno alumno : listaAlumnos) {
+        System.out.println("Nombre: " + alumno.getNombre());
+        System.out.println("Apellido: " + alumno.getApellido());
+        System.out.println("Cédula: " + alumno.getCedula());
+        System.out.println("Semestre: " + alumno.getSemestre());
+        System.out.println("Correo: " + alumno.getCorreo());
+        System.out.println("Celular: " + alumno.getTelefono());
+        System.out.println("---------------------------");
+    }
+}
+
+
 
 
 }

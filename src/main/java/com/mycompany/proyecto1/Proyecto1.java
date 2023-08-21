@@ -214,17 +214,22 @@ public class Proyecto1 {
 }
     
     public static void mostrarListadoAlumnos(ArrayList<Alumno> listaAlumnos) {
-    System.out.println("Listado de Alumnos:");
-    for (Alumno alumno : listaAlumnos) {
-        System.out.println("Nombre: " + alumno.getNombre());
-        System.out.println("Apellido: " + alumno.getApellido());
-        System.out.println("Cédula: " + alumno.getCedula());
-        System.out.println("Semestre: " + alumno.getSemestre());
-        System.out.println("Correo: " + alumno.getCorreo());
-        System.out.println("Celular: " + alumno.getTelefono());
-        System.out.println("---------------------------");
+    if (listaAlumnos.isEmpty()) {
+        System.out.println("No hay nada en el array.");
+    } else {
+        System.out.println("Listado de Alumnos:");
+        for (Alumno alumno : listaAlumnos) {
+            System.out.println("Nombre: " + alumno.getNombre());
+            System.out.println("Apellido: " + alumno.getApellido());
+            System.out.println("Cédula: " + alumno.getCedula());
+            System.out.println("Semestre: " + alumno.getSemestre());
+            System.out.println("Correo: " + alumno.getCorreo());
+            System.out.println("Celular: " + alumno.getTelefono());
+            System.out.println("---------------------------");
+        }
     }
 }
+
 
 
 

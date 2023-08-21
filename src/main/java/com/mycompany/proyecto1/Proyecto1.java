@@ -66,45 +66,45 @@ public class Proyecto1 {
     Alumno nuevoAlumno = new Alumno();
 
     System.out.print("Introduzca el nombre: ");
-    nuevoAlumno.setNombre(lector.nextLine().trim());
+    nuevoAlumno.setNombre(lector.next().trim());
     while (nuevoAlumno.getNombre().isEmpty()) {
         System.out.println("El nombre no puede estar vacío. Introduzca el nombre nuevamente: ");
-        nuevoAlumno.setNombre(lector.nextLine().trim());
+        nuevoAlumno.setNombre(lector.next().trim());
     }
 
     System.out.print("Introduce el apellido del alumno: ");
-    nuevoAlumno.setApellido(lector.nextLine().trim());
+    nuevoAlumno.setApellido(lector.next().trim());
     while (nuevoAlumno.getApellido().isEmpty()) {
         System.out.println("El apellido no puede estar vacío. Introduzca el apellido nuevamente: ");
-        nuevoAlumno.setApellido(lector.nextLine().trim());
+        nuevoAlumno.setApellido(lector.next().trim());
     }
 
     System.out.print("Introduce la cédula del alumno: ");
-    nuevoAlumno.setCedula(lector.nextLine().trim());
+    nuevoAlumno.setCedula(lector.next().trim());
     while (nuevoAlumno.getCedula().isEmpty()) {
         System.out.println("La cédula no puede estar vacía. Introduzca la cédula nuevamente: ");
-        nuevoAlumno.setCedula(lector.nextLine().trim());
+        nuevoAlumno.setCedula(lector.next().trim());
     }
 
     System.out.print("Introduce el semestre del alumno: ");
-    nuevoAlumno.setSemestre(lector.nextLine().trim());
+    nuevoAlumno.setSemestre(lector.next().trim());
     while (nuevoAlumno.getSemestre().isEmpty()) {
         System.out.println("El semestre no puede estar vacío. Introduzca el semestre nuevamente: ");
-        nuevoAlumno.setSemestre(lector.nextLine().trim());
+        nuevoAlumno.setSemestre(lector.next().trim());
     }
 
     System.out.print("Introduce el correo del alumno: ");
-    nuevoAlumno.setCorreo(lector.nextLine().trim());
+    nuevoAlumno.setCorreo(lector.next().trim());
     while (nuevoAlumno.getCorreo().isEmpty()) {
         System.out.println("El correo no puede estar vacío. Introduzca el correo nuevamente: ");
-        nuevoAlumno.setCorreo(lector.nextLine().trim());
+        nuevoAlumno.setCorreo(lector.next().trim());
     }
 
     System.out.print("Introduce el celular del alumno: ");
-    nuevoAlumno.setTelefono(lector.nextLine().trim());
+    nuevoAlumno.setTelefono(lector.next().trim());
     while (nuevoAlumno.getTelefono().isEmpty()) {
         System.out.println("El celular no puede estar vacío. Introduzca el celular nuevamente: ");
-        nuevoAlumno.setTelefono(lector.nextLine().trim());
+        nuevoAlumno.setTelefono(lector.next().trim());
     }
 
     listaAlumnos.add(nuevoAlumno);

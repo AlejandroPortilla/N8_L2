@@ -14,6 +14,7 @@ public class Proyecto1 {
         ArrayList<Alumno> misAlumnos = new ArrayList<Alumno>();
         
         //abriendo un do-while para que el menu se repita hasta que la bandera sea 5
+        
         do {
             System.out.println("Menú de Opciones:");
             System.out.println("Qué operación deseas hacer:");

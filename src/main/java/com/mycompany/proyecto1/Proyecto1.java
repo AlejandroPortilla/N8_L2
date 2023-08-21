@@ -2,7 +2,7 @@ package com.mycompany.proyecto1;
 //Añadiendo importaciones
 import java.util.Scanner;
 import java.util.ArrayList;
-import mundo.Alumno;
+import mundo.Alumno;    
 
 public class Proyecto1 {
     public static void main(String[] args) {

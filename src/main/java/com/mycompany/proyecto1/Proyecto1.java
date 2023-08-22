@@ -147,31 +147,31 @@ public class Proyecto1 {
             System.out.println("Modificando datos del alumno: " + alumno.getNombre() + " " + alumno.getApellido());
 
             System.out.print("Introduzca el nuevo nombre (Dejar vacío para no cambiar): ");
-            String nuevoNombre = lector.nextLine().trim();
+            String nuevoNombre = lector.next().trim();
             if (!nuevoNombre.isEmpty()) {
                 alumno.setNombre(nuevoNombre);
             }
 
             System.out.print("Introduce el nuevo apellido (Dejar vacío para no cambiar): ");
-            String nuevoApellido = lector.nextLine().trim();
+            String nuevoApellido = lector.next().trim();
             if (!nuevoApellido.isEmpty()) {
                 alumno.setApellido(nuevoApellido);
             }
 
             System.out.print("Introduce el nuevo semestre (Dejar vacío para no cambiar): ");
-            String nuevoSemestre = lector.nextLine().trim();
+            String nuevoSemestre = lector.next().trim();
             if (!nuevoSemestre.isEmpty()) {
                 alumno.setSemestre(nuevoSemestre);
             }
 
             System.out.print("Introduce el nuevo correo (Dejar vacío para no cambiar): ");
-            String nuevoCorreo = lector.nextLine().trim();
+            String nuevoCorreo = lector.next().trim();
             if (!nuevoCorreo.isEmpty()) {
                 alumno.setCorreo(nuevoCorreo);
             }
 
             System.out.print("Introduce el nuevo celular (Dejar vacío para no cambiar): ");
-            String nuevoTelefono = lector.nextLine().trim();
+            String nuevoTelefono = lector.next().trim();
             if (!nuevoTelefono.isEmpty()) {
                 alumno.setTelefono(nuevoTelefono);
             }

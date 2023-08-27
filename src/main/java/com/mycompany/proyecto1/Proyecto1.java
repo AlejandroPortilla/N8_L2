@@ -93,7 +93,7 @@ public class Proyecto1 {
          //cerramos el scanner(lector)  
         lector.close();
     }
-    //FUNCIONES DEL SWITCH
+    //FUNCIONES DEL SWITCH MAS FUNCIONES QUE AYUDAN
 
     
     

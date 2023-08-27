@@ -359,7 +359,7 @@ public class Proyecto1 {
         }
     }
    
-public static void cargarDatosDesdeArchivo(ArrayList<Alumno> listaAlumnos) {
+   public static void cargarDatosDesdeArchivo(ArrayList<Alumno> listaAlumnos) {
     try (BufferedReader reader = new BufferedReader(new FileReader("data.txt"))) {
         String line;
         Alumno alumnoActual = new Alumno();
@@ -390,7 +390,6 @@ public static void cargarDatosDesdeArchivo(ArrayList<Alumno> listaAlumnos) {
     }
 }
 
-   
    public static void guardarDatosEnArchivo(ArrayList<Alumno> listaAlumnos) {
     try {
         FileWriter fileWriter = new FileWriter("data.txt");

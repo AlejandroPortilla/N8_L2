@@ -28,8 +28,8 @@ public class Proyecto1 {
             System.out.println("4. Consultar Alumno");
             System.out.println("5. Mostrar listado de Alumnos:");
             System.out.println("6. Generar un reporte en txt");
-            System.out.println("7: elimina los archivos dentro del archivo txt");
-            System.out.println("7. Terminar Programa:");
+            System.out.println("7. elimina los archivos dentro del archivo txt");
+            System.out.println("8. Terminar Programa:");
             System.out.println("Seleccione una opción: ");
             
             int opcion = lector.nextInt();

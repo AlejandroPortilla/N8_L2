@@ -95,6 +95,8 @@ public class Proyecto1 {
     }
     //FUNCIONES DEL SWITCH
 
+    
+    
     public static void agregarAlumno(ArrayList<Alumno> listaAlumnos, Scanner lector) {
     Alumno nuevoAlumno = new Alumno();
 
@@ -164,7 +166,7 @@ public class Proyecto1 {
     }
 }
 
-public static void modificarAlumno(ArrayList<Alumno> listaAlumnos, Scanner lector) {
+    public static void modificarAlumno(ArrayList<Alumno> listaAlumnos, Scanner lector) {
     System.out.print("Ingrese la cédula del alumno a modificar: ");
     String cedulaModificar = lector.next().trim();
 
@@ -274,7 +276,7 @@ public static void modificarAlumno(ArrayList<Alumno> listaAlumnos, Scanner lecto
     }
 }
 
-   public static void generarReporte(ArrayList<Alumno> listaAlumnos) {
+    public static void generarReporte(ArrayList<Alumno> listaAlumnos) {
     try {
         File archivo = new File("data.txt");
         
@@ -318,7 +320,7 @@ public static void modificarAlumno(ArrayList<Alumno> listaAlumnos, Scanner lecto
     }
 }
     
-   public static void eliminarArchivo(String data) {
+    public static void eliminarArchivo(String data) {
         File archivo = new File(data);
 
         if (archivo.exists()) {
@@ -332,7 +334,7 @@ public static void modificarAlumno(ArrayList<Alumno> listaAlumnos, Scanner lecto
         }
     }
    
-   public static void eliminarEstudiantePorCedulaTXT(ArrayList<Alumno> listaAlumnos, String cedula) {
+    public static void eliminarEstudiantePorCedulaTXT(ArrayList<Alumno> listaAlumnos, String cedula) {
         Alumno estudianteEliminar = null;
         for (Alumno alumno : listaAlumnos) {
             if (alumno.getCedula().equals(cedula)) {
@@ -375,7 +377,7 @@ public static void modificarAlumno(ArrayList<Alumno> listaAlumnos, Scanner lecto
         }
     }
    
-   public static void cargarDatosDesdeArchivo(ArrayList<Alumno> listaAlumnos) {
+    public static void cargarDatosDesdeArchivo(ArrayList<Alumno> listaAlumnos) {
     try (BufferedReader reader = new BufferedReader(new FileReader("data.txt"))) {
         String line;
         Alumno alumnoActual = new Alumno();
@@ -406,7 +408,7 @@ public static void modificarAlumno(ArrayList<Alumno> listaAlumnos, Scanner lecto
     }
 }
 
-   public static void guardarDatosEnArchivo(ArrayList<Alumno> listaAlumnos) {
+    public static void guardarDatosEnArchivo(ArrayList<Alumno> listaAlumnos) {
     try {
         FileWriter fileWriter = new FileWriter("data.txt");
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);

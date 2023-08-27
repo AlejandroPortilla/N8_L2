@@ -1,7 +1,9 @@
 package com.mycompany.proyecto1;
 //Añadiendo importaciones
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.util.Scanner;
 import java.util.ArrayList;
 import mundo.Alumno;
@@ -17,6 +19,9 @@ public class Proyecto1 {
         
         //creando el array en el que se va a guardar cada cosa
         ArrayList<Alumno> misAlumnos = new ArrayList<Alumno>();
+        
+        // Cargar datos al inicio
+        cargarDatosDesdeArchivo(misAlumnos);
         
         //abriendo un do-while para que el menu se repita hasta que la bandera sea 5
         
@@ -69,14 +74,16 @@ public class Proyecto1 {
                     eliminarArchivo("data.txt");
                     break;
                 case 8:
-                    System.out.print("Digita la cedula del estudiante que quieres eliminar: " );
+                    System.out.println("Ha seleccionado la opción 8. (Eliminar estudiante)");
+                    System.out.print("Digita la cedula del estudiante que quieres eliminar: ");
                     String cedulaEliminar = lector.next();
-                    eliminarEstudiantePorCedulaTXT(misAlumnos,cedulaEliminar);
+                    eliminarEstudiantePorCedulaTXT(misAlumnos, cedulaEliminar);
                     break;
                 case 9:
                     System.out.println("Saliendo del programa.");
+                    guardarDatosEnArchivo(misAlumnos); // Guardar datos antes de salir
                     activo = false;
-                    break;
+            break;
                 default:
                     System.out.println("Opción no válida. Por favor, seleccione una opción válida.");
                     break;
@@ -329,6 +336,63 @@ public class Proyecto1 {
             System.out.println("No se encontró ningún estudiante con la cédula proporcionada.");
         }
     }
+   
+   public static void cargarDatosDesdeArchivo(ArrayList<Alumno> listaAlumnos) {
+    try {
+        FileReader fileReader = new FileReader("data.txt");
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+        String linea;
+        Alumno alumno = new Alumno();
+        while ((linea = bufferedReader.readLine()) != null) {
+            if (linea.equals("---------------------------")) {
+                listaAlumnos.add(alumno);
+                alumno = new Alumno();
+            } else if (linea.startsWith("Nombre: ")) {
+                alumno.setNombre(linea.substring(8));
+            } else if (linea.startsWith("Apellido: ")) {
+                alumno.setApellido(linea.substring(10));
+            } else if (linea.startsWith("Cédula: ")) {
+                alumno.setCedula(linea.substring(9));
+            } else if (linea.startsWith("Semestre: ")) {
+                alumno.setSemestre(linea.substring(11));
+            } else if (linea.startsWith("Correo: ")) {
+                alumno.setCorreo(linea.substring(9));
+            } else if (linea.startsWith("Celular: ")) {
+                alumno.setTelefono(linea.substring(10));
+            }
+        }
+
+        bufferedReader.close();
+        fileReader.close();
+    } catch (IOException e) {
+        System.out.println("Error al cargar los datos desde el archivo: " + e.getMessage());
+    }
+}
+   
+   public static void guardarDatosEnArchivo(ArrayList<Alumno> listaAlumnos) {
+    try {
+        FileWriter fileWriter = new FileWriter("data.txt");
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+        for (Alumno alumno : listaAlumnos) {
+            bufferedWriter.write("Nombre: " + alumno.getNombre() + "\n");
+            bufferedWriter.write("Apellido: " + alumno.getApellido() + "\n");
+            bufferedWriter.write("Cédula: " + alumno.getCedula() + "\n");
+            bufferedWriter.write("Semestre: " + alumno.getSemestre() + "\n");
+            bufferedWriter.write("Correo: " + alumno.getCorreo() + "\n");
+            bufferedWriter.write("Celular: " + alumno.getTelefono() + "\n");
+            bufferedWriter.write("---------------------------\n");
+        }
+
+        bufferedWriter.close();
+        fileWriter.close();
+    } catch (IOException e) {
+        System.out.println("Error al guardar los datos en el archivo: " + e.getMessage());
+    }
+}
+   
+   
 
        
 

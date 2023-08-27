@@ -1,16 +1,12 @@
 package com.mycompany.proyecto1;
 //Añadiendo importaciones
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
 import java.util.Scanner;
 import java.util.ArrayList;
 import mundo.Alumno;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.*;
-import java.util.*;
 
 
 public class Proyecto1 {

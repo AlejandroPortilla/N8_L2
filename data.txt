@@ -1,7 +1,0 @@
-Nombre: asd
-Apellido: asd
-Cédula: 123
-Semestre: asd
-Correo: asd
-Celular: asd
-

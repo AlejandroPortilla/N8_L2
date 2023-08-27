@@ -73,6 +73,7 @@ public class Proyecto1 {
                     eliminarArchivo("data.txt");
                     break;
                 case 8:
+                    System.out.print("Digita la cedula del estudiante que quieres eliminar");
                     String cedulaEliminar = lector.next();
                     eliminarEstudiantePorCedulaTXT(misAlumnos,cedulaEliminar);
                     break;

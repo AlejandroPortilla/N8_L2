@@ -1,0 +1,7 @@
+Nombre: dadad
+Apellido: dadada
+Cédula: 456678
+Semestre: adada
+Correo: dadada
+Celular: dadad
+---------------------------

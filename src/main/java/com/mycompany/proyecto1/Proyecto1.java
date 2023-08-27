@@ -245,9 +245,10 @@ public class Proyecto1 {
     }
 }
 
-    public static void generarReporte(ArrayList<Alumno> listaAlumnos) {
+   public static void generarReporte(ArrayList<Alumno> listaAlumnos) {
         try {
-            FileWriter writer = new FileWriter("data.txt");
+            FileWriter writer = new FileWriter("data.txt", true); // Usamos true para modo de apéndice
+
             for (Alumno alumno : listaAlumnos) {
                 writer.write("Nombre: " + alumno.getNombre() + "\n");
                 writer.write("Apellido: " + alumno.getApellido() + "\n");
@@ -257,6 +258,7 @@ public class Proyecto1 {
                 writer.write("Celular: " + alumno.getTelefono() + "\n");
                 writer.write("---------------------------\n");
             }
+
             writer.close();
             System.out.println("Reporte generado exitosamente.");
         } catch (IOException e) {

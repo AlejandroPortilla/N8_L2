@@ -1,0 +1,7 @@
+Nombre: asd
+Apellido: asd
+Cédula: 123
+Semestre: 4
+Correo: afds
+Celular: 321
+---------------------------

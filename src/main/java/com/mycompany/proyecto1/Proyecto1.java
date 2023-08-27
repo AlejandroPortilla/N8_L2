@@ -1,8 +1,12 @@
 package com.mycompany.proyecto1;
 //Añadiendo importaciones
+import java.io.File;
 import java.util.Scanner;
 import java.util.ArrayList;
-import mundo.Alumno;    
+import mundo.Alumno;
+import java.io.FileWriter;
+import java.io.IOException;
+
 
 public class Proyecto1 {
     public static void main(String[] args) {
@@ -23,8 +27,10 @@ public class Proyecto1 {
             System.out.println("3. Modificar Alumno");
             System.out.println("4. Consultar Alumno");
             System.out.println("5. Mostrar listado de Alumnos:");
-            System.out.println("6. Terminar Programa:");
-            System.out.print("Seleccione una opción: ");
+            System.out.println("6. Generar un reporte en txt");
+            System.out.println("7: elimina los archivos dentro del archivo txt");
+            System.out.println("7. Terminar Programa:");
+            System.out.println("Seleccione una opción: ");
             
             int opcion = lector.nextInt();
             //aqui abrimos el switch en el que se va a cumplir lo de el menu de opciones
@@ -54,6 +60,13 @@ public class Proyecto1 {
                     mostrarListadoAlumnos(misAlumnos);
                     break;
                 case 6:
+                    System.out.println("Ha seleccionado la opcion 6. (Generar reporte");
+                    generarReporte(misAlumnos);
+                    break;
+                case 7:
+                    eliminarArchivo("data.txt");
+                    break;
+                case 8:
                     System.out.println("Saliendo del programa.");
                     activo = false;
                     break;
@@ -231,6 +244,43 @@ public class Proyecto1 {
         }
     }
 }
+
+    public static void generarReporte(ArrayList<Alumno> listaAlumnos) {
+        try {
+            FileWriter writer = new FileWriter("data.txt");
+            for (Alumno alumno : listaAlumnos) {
+                writer.write("Nombre: " + alumno.getNombre() + "\n");
+                writer.write("Apellido: " + alumno.getApellido() + "\n");
+                writer.write("Cédula: " + alumno.getCedula() + "\n");
+                writer.write("Semestre: " + alumno.getSemestre() + "\n");
+                writer.write("Correo: " + alumno.getCorreo() + "\n");
+                writer.write("Celular: " + alumno.getTelefono() + "\n");
+                writer.write("---------------------------\n");
+            }
+            writer.close();
+            System.out.println("Reporte generado exitosamente.");
+        } catch (IOException e) {
+            System.out.println("Error al generar el reporte: " + e.getMessage());
+        }
+    }
+    
+   public static void eliminarArchivo(String data) {
+        File archivo = new File(data);
+
+        if (archivo.exists()) {
+            if (archivo.delete()) {
+                System.out.println("Archivo eliminado exitosamente.");
+            } else {
+                System.out.println("No se pudo eliminar el archivo.");
+            }
+        } else {
+            System.out.println("El archivo no existe.");
+        }
+    }
+
+       
+
+
 
 
 

@@ -1,11 +1,16 @@
 package com.mycompany.proyecto1;
 //Añadiendo importaciones
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.util.Scanner;
 import java.util.ArrayList;
 import mundo.Alumno;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.*;
+import java.util.*;
 
 
 public class Proyecto1 {
@@ -29,7 +34,8 @@ public class Proyecto1 {
             System.out.println("5. Mostrar listado de Alumnos:");
             System.out.println("6. Generar un reporte en txt");
             System.out.println("7. elimina los archivos dentro del archivo txt");
-            System.out.println("8. Terminar Programa:");
+            System.out.println("8. elimina un estudiante dentro del txt");
+            System.out.println("9. Terminar Programa:");
             System.out.println("Seleccione una opción: ");
             
             int opcion = lector.nextInt();
@@ -67,6 +73,10 @@ public class Proyecto1 {
                     eliminarArchivo("data.txt");
                     break;
                 case 8:
+                    String cedulaEliminar = lector.next();
+                    eliminarEstudiantePorCedulaTXT(misAlumnos,cedulaEliminar);
+                    break;
+                case 9:
                     System.out.println("Saliendo del programa.");
                     activo = false;
                     break;
@@ -279,12 +289,55 @@ public class Proyecto1 {
             System.out.println("El archivo no existe.");
         }
     }
+   
+   public static void eliminarEstudiantePorCedulaTXT(ArrayList<Alumno> listaAlumnos, String cedula) {
+        Alumno estudianteEliminar = null;
+        for (Alumno alumno : listaAlumnos) {
+            if (alumno.getCedula().equals(cedula)) {
+                estudianteEliminar = alumno;
+                break;
+            }
+        }
+
+        if (estudianteEliminar != null) {
+            listaAlumnos.remove(estudianteEliminar);
+            System.out.println("Estudiante eliminado exitosamente.");
+
+            // Volver a escribir el archivo con la lista actualizada
+            try {
+                FileWriter fileWriter = new FileWriter("data.txt", false);
+                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+                for (Alumno alumno : listaAlumnos) {
+                    bufferedWriter.write("Nombre: " + alumno.getNombre());
+                    bufferedWriter.newLine();
+                    bufferedWriter.write("Apellido: " + alumno.getApellido());
+                    bufferedWriter.newLine();
+                    bufferedWriter.write("Cédula: " + alumno.getCedula());
+                    bufferedWriter.newLine();
+                    bufferedWriter.write("Semestre: " + alumno.getSemestre());
+                    bufferedWriter.newLine();
+                    bufferedWriter.write("Correo: " + alumno.getCorreo());
+                    bufferedWriter.newLine();
+                    bufferedWriter.write("Celular: " + alumno.getTelefono());
+                    bufferedWriter.newLine();
+                    bufferedWriter.newLine(); // Separador entre estudiantes
+                }
+
+                bufferedWriter.close();
+            } catch (IOException e) {
+                System.out.println("Error al escribir el archivo: " + e.getMessage());
+            }
+        } else {
+            System.out.println("No se encontró ningún estudiante con la cédula proporcionada.");
+        }
+    }
 
        
 
 
 
-
+      
 
 
 

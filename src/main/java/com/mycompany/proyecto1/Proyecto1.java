@@ -9,6 +9,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import mundo.Alumno;
 import java.io.IOException;
+import java.awt.event.KeyEvent;
 
 
 
@@ -163,42 +164,49 @@ public class Proyecto1 {
     }
 }
 
-    public static void modificarAlumno(ArrayList<Alumno> listaAlumnos, Scanner lector) {
+public static void modificarAlumno(ArrayList<Alumno> listaAlumnos, Scanner lector) {
     System.out.print("Ingrese la cédula del alumno a modificar: ");
-    String cedulaModificar = lector.next();
+    String cedulaModificar = lector.next().trim();
 
     boolean encontrado = false;
     for (Alumno alumno : listaAlumnos) {
         if (alumno.getCedula().equals(cedulaModificar)) {
             System.out.println("Modificando datos del alumno: " + alumno.getNombre() + " " + alumno.getApellido());
 
-            System.out.print("Introduzca el nuevo nombre (Dejar vacío para no cambiar): ");
-            String nuevoNombre = lector.next().trim();
-            if (!nuevoNombre.isEmpty()) {
+            System.out.print("Introduzca la nueva cédula (Dejar vacío para no cambiar, o 'x' para confirmar): ");
+            String nuevaCedula = leerConReemplazoDeX(lector);
+
+            if (!nuevaCedula.isEmpty() && !nuevaCedula.equalsIgnoreCase("x")) {
+                alumno.setCedula(nuevaCedula);
+            }
+
+            System.out.print("Introduzca el nuevo nombre (Dejar vacío para no cambiar, o 'x' para confirmar): ");
+            String nuevoNombre = leerConReemplazoDeX(lector);
+            if (!nuevoNombre.isEmpty() && !nuevoNombre.equalsIgnoreCase("x")) {
                 alumno.setNombre(nuevoNombre);
             }
 
-            System.out.print("Introduce el nuevo apellido (Dejar vacío para no cambiar): ");
-            String nuevoApellido = lector.next().trim();
-            if (!nuevoApellido.isEmpty()) {
+            System.out.print("Introduce el nuevo apellido (Dejar vacío para no cambiar, o 'x' para confirmar): ");
+            String nuevoApellido = leerConReemplazoDeX(lector);
+            if (!nuevoApellido.isEmpty() && !nuevoApellido.equalsIgnoreCase("x")) {
                 alumno.setApellido(nuevoApellido);
             }
 
-            System.out.print("Introduce el nuevo semestre (Dejar vacío para no cambiar): ");
-            String nuevoSemestre = lector.next().trim();
-            if (!nuevoSemestre.isEmpty()) {
+            System.out.print("Introduce el nuevo semestre (Dejar vacío para no cambiar, o 'x' para confirmar): ");
+            String nuevoSemestre = leerConReemplazoDeX(lector);
+            if (!nuevoSemestre.isEmpty() && !nuevoSemestre.equalsIgnoreCase("x")) {
                 alumno.setSemestre(nuevoSemestre);
             }
 
-            System.out.print("Introduce el nuevo correo (Dejar vacío para no cambiar): ");
-            String nuevoCorreo = lector.next().trim();
-            if (!nuevoCorreo.isEmpty()) {
+            System.out.print("Introduce el nuevo correo (Dejar vacío para no cambiar, o 'x' para confirmar): ");
+            String nuevoCorreo = leerConReemplazoDeX(lector);
+            if (!nuevoCorreo.isEmpty() && !nuevoCorreo.equalsIgnoreCase("x")) {
                 alumno.setCorreo(nuevoCorreo);
             }
 
-            System.out.print("Introduce el nuevo celular (Dejar vacío para no cambiar): ");
-            String nuevoTelefono = lector.next().trim();
-            if (!nuevoTelefono.isEmpty()) {
+            System.out.print("Introduce el nuevo celular (Dejar vacío para no cambiar, o 'x' para confirmar): ");
+            String nuevoTelefono = leerConReemplazoDeX(lector);
+            if (!nuevoTelefono.isEmpty() && !nuevoTelefono.equalsIgnoreCase("x")) {
                 alumno.setTelefono(nuevoTelefono);
             }
 
@@ -212,7 +220,15 @@ public class Proyecto1 {
         System.out.println("No se encontró ningún alumno con la cédula proporcionada.");
     }
 }
-    
+
+    public static String leerConReemplazoDeX(Scanner lector) {
+    String input = lector.next();
+    if (input.equalsIgnoreCase("x")) {
+        return "";
+    }
+    return input;
+}
+
     public static void consultarAlumno(ArrayList<Alumno> listaAlumnos, Scanner lector) {
     System.out.print("Ingrese la cédula del alumno a consultar: ");
     String cedulaConsultar = lector.next();

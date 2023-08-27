@@ -11,17 +11,16 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 
+
 public class Proyecto1 {
     public static void main(String[] args) {
         //definiendo variables lector y activo
-        Scanner lector = new Scanner(System.in);
-        boolean activo = true;
-        
-        //creando el array en el que se va a guardar cada cosa
+        Scanner lector = new Scanner(System.in);        
         ArrayList<Alumno> misAlumnos = new ArrayList<Alumno>();
         
-        // Cargar datos al inicio
         cargarDatosDesdeArchivo(misAlumnos);
+        
+        boolean activo = true;
         
         //abriendo un do-while para que el menu se repita hasta que la bandera sea 5
         
@@ -260,25 +259,48 @@ public class Proyecto1 {
 }
 
    public static void generarReporte(ArrayList<Alumno> listaAlumnos) {
-        try {
-            FileWriter writer = new FileWriter("data.txt", true); // Usamos true para modo de apéndice
-
-            for (Alumno alumno : listaAlumnos) {
-                writer.write("Nombre: " + alumno.getNombre() + "\n");
-                writer.write("Apellido: " + alumno.getApellido() + "\n");
-                writer.write("Cédula: " + alumno.getCedula() + "\n");
-                writer.write("Semestre: " + alumno.getSemestre() + "\n");
-                writer.write("Correo: " + alumno.getCorreo() + "\n");
-                writer.write("Celular: " + alumno.getTelefono() + "\n");
-                writer.write("---------------------------\n");
-            }
-
-            writer.close();
-            System.out.println("Reporte generado exitosamente.");
-        } catch (IOException e) {
-            System.out.println("Error al generar el reporte: " + e.getMessage());
+    try {
+        File archivo = new File("data.txt");
+        
+        if (!archivo.exists()) {
+            archivo.createNewFile();
         }
+
+        // Crear una nueva lista para almacenar alumnos con cédulas únicas
+        ArrayList<Alumno> listaAlumnosUnicos = new ArrayList<>();
+
+        // Filtrar y agregar solo los alumnos con cédulas únicas a la nueva lista
+        for (Alumno alumno : listaAlumnos) {
+            boolean cedulaRepetida = false;
+            for (Alumno alumnoUnico : listaAlumnosUnicos) {
+                if (alumnoUnico.getCedula().equals(alumno.getCedula())) {
+                    cedulaRepetida = true;
+                    break;
+                }
+            }
+            if (!cedulaRepetida) {
+                listaAlumnosUnicos.add(alumno);
+            }
+        }
+
+        FileWriter writer = new FileWriter(archivo, true); // Modo de apéndice
+
+        for (Alumno alumno : listaAlumnosUnicos) {
+            writer.write("Nombre: " + alumno.getNombre() + "\n");
+            writer.write("Apellido: " + alumno.getApellido() + "\n");
+            writer.write("Cédula: " + alumno.getCedula() + "\n");
+            writer.write("Semestre: " + alumno.getSemestre() + "\n");
+            writer.write("Correo: " + alumno.getCorreo() + "\n");
+            writer.write("Celular: " + alumno.getTelefono() + "\n");
+            writer.write("---------------------------\n");
+        }
+
+        writer.close();
+        System.out.println("Reporte generado exitosamente.");
+    } catch (IOException e) {
+        System.out.println("Error al generar el reporte: " + e.getMessage());
     }
+}
     
    public static void eliminarArchivo(String data) {
         File archivo = new File(data);
@@ -337,38 +359,37 @@ public class Proyecto1 {
         }
     }
    
-   public static void cargarDatosDesdeArchivo(ArrayList<Alumno> listaAlumnos) {
-    try {
-        FileReader fileReader = new FileReader("data.txt");
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
-
-        String linea;
-        Alumno alumno = new Alumno();
-        while ((linea = bufferedReader.readLine()) != null) {
-            if (linea.equals("---------------------------")) {
-                listaAlumnos.add(alumno);
-                alumno = new Alumno();
-            } else if (linea.startsWith("Nombre: ")) {
-                alumno.setNombre(linea.substring(8));
-            } else if (linea.startsWith("Apellido: ")) {
-                alumno.setApellido(linea.substring(10));
-            } else if (linea.startsWith("Cédula: ")) {
-                alumno.setCedula(linea.substring(9));
-            } else if (linea.startsWith("Semestre: ")) {
-                alumno.setSemestre(linea.substring(11));
-            } else if (linea.startsWith("Correo: ")) {
-                alumno.setCorreo(linea.substring(9));
-            } else if (linea.startsWith("Celular: ")) {
-                alumno.setTelefono(linea.substring(10));
+public static void cargarDatosDesdeArchivo(ArrayList<Alumno> listaAlumnos) {
+    try (BufferedReader reader = new BufferedReader(new FileReader("data.txt"))) {
+        String line;
+        Alumno alumnoActual = new Alumno();
+        while ((line = reader.readLine()) != null) {
+            if (line.startsWith("Cédula: ")) {
+                if (alumnoActual.getCedula() != null) {
+                    listaAlumnos.add(alumnoActual);
+                    alumnoActual = new Alumno();
+                }
+                alumnoActual.setCedula(line.substring("Cédula: ".length()));
+            } else if (line.startsWith("Nombre: ")) {
+                alumnoActual.setNombre(line.substring("Nombre: ".length()));
+            } else if (line.startsWith("Apellido: ")) {
+                alumnoActual.setApellido(line.substring("Apellido: ".length()));
+            } else if (line.startsWith("Semestre: ")) {
+                alumnoActual.setSemestre(line.substring("Semestre: ".length()));
+            } else if (line.startsWith("Correo: ")) {
+                alumnoActual.setCorreo(line.substring("Correo: ".length()));
+            } else if (line.startsWith("Celular: ")) {
+                alumnoActual.setTelefono(line.substring("Celular: ".length()));
             }
         }
-
-        bufferedReader.close();
-        fileReader.close();
+        if (alumnoActual.getCedula() != null) {
+            listaAlumnos.add(alumnoActual);
+        }
     } catch (IOException e) {
         System.out.println("Error al cargar los datos desde el archivo: " + e.getMessage());
     }
 }
+
    
    public static void guardarDatosEnArchivo(ArrayList<Alumno> listaAlumnos) {
     try {

@@ -1,0 +1,7 @@
+Nombre: asd
+Apellido: asd
+Cédula: 345
+Semestre: asd
+Correo: asd
+Celular: asd
+

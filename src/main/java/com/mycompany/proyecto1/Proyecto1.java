@@ -301,7 +301,7 @@ public class Proyecto1 {
             }
         }
 
-        FileWriter writer = new FileWriter(archivo, true); // Modo de apéndice
+        FileWriter writer = new FileWriter(archivo); // Crear un nuevo archivo, sobrescribir contenido
 
         for (Alumno alumno : listaAlumnosUnicos) {
             writer.write("Nombre: " + alumno.getNombre() + "\n");
